@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Godman Game
+{% endblock %}
+{% block content %}
+<body class="text-center">
+ <div class="container">
+     <form method="post">
+         <h3 align="center">Guess</h3>
+         <div class="form-group">
+             <label for="guess">Guess</label>
+             <input type="text" name="guess" class="form-control"
+                    id="guess" placeholder="Enter scissors/paper/rock"/>
+         </div>
+         <br>
+         <button type="submit" class="btn btn-primary">Enter</button>
+     </form>
+     <br>
+     <table class="table table-hover table-dark">
+         <thead>
+            <tr>
+               <!-- Your Columns HERE -->
+               <th scope="col">ID</th>
+               <th scope="col">Computer</th>
+               <th scope="col">{{ current_user.username }}</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for round in rounds %}
+            <tr>
+               <td>{{ round.id }}</td>
+               <td>{{ round.computer }}</td>
+               <td>{{ round.user }}</td>
+                <td></td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+  </div>
+</body>
+{% endblock %}

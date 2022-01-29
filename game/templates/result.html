@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+Result!!
+{% endblock %}
+{% block content %}
+<body class="text-center">
+ <div class="container">
+     <br>
+     <table class="table table-hover table-dark">
+         <thead>
+            <tr>
+               <!-- Your Columns HERE -->
+               <th scope="col">ID</th>
+               <th scope="col">Computer</th>
+               <th scope="col">{{ current_user.username }}</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for round in rounds %}
+            <tr>
+               <td>{{ round.id }}</td>
+               <td>{{ round.computer }}</td>
+               <td>{{ round.user }}</td>
+            {% endfor %}
+         </tbody>
+      </table>
+     <br>
+     <div style="background-color: {{ color }}">
+         <h1 style="font-weight: bold; color: black">{{ result }}</h1>
+     </div>
+     <button class="btn btn-outline btn-success text-light">
+             <a style="color: white" href="{{ url_for('views.delete_all') }}">New game</a>
+         </button>
+     <br>
+  </div>
+</body>
+{% endblock %}
